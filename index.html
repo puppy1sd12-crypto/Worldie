@@ -1,0 +1,221 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mystery Country</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>🌎 Mystery Country</h1>
+    <p>Can you find the mystery country?</p>
+
+    <button id="settings-button" type="button">
+    ⚙️ Settings
+</button>
+</header>
+
+<nav class="game-tabs">
+    <button id="country-tab" class="active" type="button">
+        🌎 Mystery Country
+    </button>
+
+    <button id="state-tab" type="button">
+        🇺🇸 Mystery State
+    </button>
+</nav>
+
+<main>
+    <div id="country-game">
+
+        <section class="game-panel">
+            <h2>Find the Mystery Country</h2>
+
+            <p id="message">Loading globe...</p>
+
+            <form id="guess-form">
+                <input
+                    id="country-input"
+                    list="country-list"
+                    placeholder="Enter a country..."
+                    autocomplete="off"
+                >
+                <datalist id="country-list"></datalist>
+                <button type="submit">Guess</button>
+            </form>
+
+            <button id="new-game" type="button">New Game</button>
+
+            <h3>Your Guesses</h3>
+            <ul id="guess-history"></ul>
+        </section>
+
+        <section class="globe-panel">
+            <h2>Explore the World</h2>
+            <div id="globe-container"></div>
+            <p>Drag to spin the globe. Scroll to zoom. Click a country to guess!</p>
+       </section>
+</div>
+<div id="state-game" class="hidden">
+
+    <section class="game-panel">
+        <h2>Find the Mystery State</h2>
+
+        <p id="state-message">Loading states...</p>
+
+        <form id="state-guess-form">
+            <input
+                id="state-input"
+                list="state-list"
+                placeholder="Enter a state..."
+                autocomplete="off"
+            >
+
+            <datalist id="state-list"></datalist>
+
+            <button type="submit">Guess</button>
+        </form>
+
+        <button id="state-new-game" type="button">New Game</button>
+
+        <h3>Your Guesses</h3>
+        <ul id="state-guess-history"></ul>
+    </section>
+
+    <section class="globe-panel">
+        <h2>Explore the United States</h2>
+        <div id="state-map"></div>
+        <p>Explore the map and click a state to guess!</p>
+    </section>
+
+</div>
+</main>
+
+
+<div id="settings-modal" class="modal hidden">
+    <div class="settings-window">
+
+        <div class="settings-header">
+            <h2>⚙️ Game Settings</h2>
+            <button id="close-settings" type="button">✕</button>
+        </div>
+
+        <div class="settings-tabs">
+            <button id="country-settings-tab" class="active" type="button">
+                🌎 Country Settings
+            </button>
+
+            <button id="state-settings-tab" type="button">
+                🇺🇸 State Settings
+            </button>
+        </div>
+
+        <!-- COUNTRY SETTINGS -->
+
+        <div id="country-settings">
+
+            <h3>Gameplay</h3>
+
+            <label class="setting-option">
+                Click countries to guess
+                <input type="checkbox" id="click-toggle" checked>
+            </label>
+
+            <label class="setting-option">
+                Type country guesses
+                <input type="checkbox" id="typing-toggle" checked>
+            </label>
+
+            <label class="setting-option">
+                Show distance hints
+                <input type="checkbox" id="distance-toggle" checked>
+            </label>
+
+            <h3>Globe Settings</h3>
+
+            <label class="setting-option">
+                Automatic rotation
+                <input type="checkbox" id="rotation-toggle" checked>
+            </label>
+
+            <label class="setting-option">
+                Show country borders
+                <input type="checkbox" id="borders-toggle" checked>
+            </label>
+
+            <label class="setting-option">
+                Show atmosphere
+                <input type="checkbox" id="atmosphere-toggle" checked>
+            </label>
+
+            <h3>Measurements</h3>
+
+            <select id="distance-unit">
+                <option value="km">Kilometers (km)</option>
+                <option value="mi">Miles (mi)</option>
+            </select>
+
+        </div>
+
+        <!-- STATE SETTINGS -->
+
+        <div id="state-settings" class="hidden">
+
+            <h3>Gameplay</h3>
+
+            <label class="setting-option">
+                Click states to guess
+                <input type="checkbox" id="state-click-toggle" checked>
+            </label>
+
+            <label class="setting-option">
+                Type state guesses
+                <input type="checkbox" id="state-typing-toggle" checked>
+            </label>
+
+            <label class="setting-option">
+                Show distance hints
+                <input type="checkbox" id="state-distance-toggle" checked>
+            </label>
+
+            <h3>Map Settings</h3>
+
+            <label class="setting-option">
+                Show state borders
+                <input type="checkbox" id="state-borders-toggle" checked>
+            </label>
+
+        </div>
+
+    </div>
+</div>
+
+
+<div id="win-modal" class="win-modal hidden">
+
+    <div id="confetti-container"></div>
+
+    <div class="win-card">
+        <h1>🎉 YOU GOT IT!</h1>
+
+        <h2 id="win-country"></h2>
+
+        <p>Congratulations! You found the mystery country!</p>
+
+        <button id="play-again" type="button">
+            Play Again
+        </button>
+    </div>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3"></script>
+    <script src="https://unpkg.com/globe.gl"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>
